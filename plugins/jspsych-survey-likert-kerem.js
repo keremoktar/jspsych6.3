@@ -146,6 +146,19 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
 
     html += '</form>'
 
+    // Function to close the modal
+    function closeModal() {
+      var modal = document.getElementById("noResponse");
+      modal.style.display = "none";
+    }
+    
+    // Function to open the modal (if needed)
+    function openModal() {
+      var modal = document.getElementById("noResponse");
+      $("noResponse").show(); 
+      modal.style.display = "block";
+    }
+
     // Add Modal:
     var modalHTML = `
       <div id="noResponse" class="modal" style="display: none;">
@@ -159,18 +172,6 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     html += modalHTML;
 
     display_element.innerHTML = html;
-
-     // Function to close the modal
-    function closeModal() {
-      var modal = document.getElementById("noResponse");
-      modal.style.display = "none";
-    }
-    
-    // Function to open the modal (if needed)
-    function openModal() {
-      var modal = document.getElementById("noResponse");
-      modal.style.display = "block";
-    }
     
     display_element.querySelector('#jspsych-survey-likert-form').addEventListener('submit', function(e){
       e.preventDefault();
