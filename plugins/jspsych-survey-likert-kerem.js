@@ -151,7 +151,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
       var modal = document.getElementById("noResponse");
       modal.style.display = "none";
     }
-    
+
     // Function to open the modal (if needed)
     function openModal() {
       var modal = document.getElementById("noResponse");
@@ -163,7 +163,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     var modalHTML = `
       <div id="noResponse" class="modal" style="display: none;">
         <div class="modal-content">
-          <span class="close" onclick="closeModal()">&times;</span>
+          <span class="close">&times;</span>
           <p>There were some <b>unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.</p>
         </div>
       </div>`;
@@ -172,6 +172,13 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     html += modalHTML;
 
     display_element.innerHTML = html;
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
     
     display_element.querySelector('#jspsych-survey-likert-form').addEventListener('submit', function(e){
       e.preventDefault();
