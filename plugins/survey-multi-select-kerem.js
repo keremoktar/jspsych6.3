@@ -168,7 +168,38 @@ jsPsych.plugins['survey-multi-select'] = (function() {
     // add submit button
     trial_form.innerHTML += '<div class="fail-message"></div>'
     trial_form.innerHTML += '<button id="'+plugin_id_name+'-next" class="'+plugin_id_name+' jspsych-btn">'+trial.button_label+'</button>';
+    
+    // Add Modal:
+    var modalHTML = `
+      <div id="noResponse" class="modal" style="display: none;">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>
+          There were <b style="color: navy;">unanswered questions</b> on this page!<br>
+          Please make sure you did not accidentally skip a question by reviewing your answers before continuing.<br>
+          This check is intended to prevent mistaken skips---you do not have to select any options if you do not want to.
+          </p>
+        </div>
+      </div>`;
+  
+    // Append modal HTML to the existing HTML
+    trial_form.innerHTML += modalHTML;
 
+    var modal = document.getElementById("noResponse");
+    var span = document.getElementsByClassName("close")[0];
+ 
+    // Function to open the modal (if needed)
+    function openModal() {
+      modal.style.display = "block";
+    }
+
+    // Get the <span> element that closes the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    var requestResponseCounter = 0
+    
     // validation check on the data first for custom validation handling
     // then submit the form
     display_element.querySelector('#jspsych-survey-multi-select-next').addEventListener('click', function(){
@@ -201,6 +232,15 @@ jsPsych.plugins['survey-multi-select'] = (function() {
           currentChecked = inputboxes[j];
           val.push(currentChecked.value)
         }
+
+        // Add Modal showing no response when no options are selected 
+        if (val.length == 0 && requestResponseCounter  < 1) {
+          openModal()
+          modal.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+          requestResponseCounter += 1
+          return; 
+        };
+        
         var id = 'Q' + index
         var obje = {};
         var name = id;
