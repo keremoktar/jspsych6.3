@@ -172,18 +172,14 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     span.onclick = function() {
       modal.style.display = "none";
     }
-
-    // make the modal scroll screen to top
-    function scrollToTop() {
-        // For cross-browser compatibility
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     
-        // Scroll to top smoothly
-        if (scrollTop > 0) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    function scrollDivToTop(divId) {
+      const div = document.getElementById(divId);
+      if (div) {
+        div.scrollTop = 0;
+      }
     }
-    
+
     var requestResponseCounter = 0
     
     display_element.querySelector('#jspsych-survey-likert-form').addEventListener('submit', function(e){
@@ -197,7 +193,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
         if (el === null && requestResponseCounter  < 1) {
-          scrollToTop()
+          scrollDivToTop(jspsych-content)
           openModal()
           requestResponseCounter += 1
           return; 
