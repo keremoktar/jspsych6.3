@@ -167,6 +167,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
       var endTime = performance.now();
       var response_time = endTime - startTime;
 
+      var matches = display_element.querySelectorAll('#jspsych-survey-likert-form .jspsych-survey-likert-opts');
       for(var index = 0; index < matches.length; index++){
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
@@ -178,7 +179,6 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
 
       // create object to hold responses
       var question_data = {};
-      var matches = display_element.querySelectorAll('#jspsych-survey-likert-form .jspsych-survey-likert-opts');
       for(var index = 0; index < matches.length; index++){
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
