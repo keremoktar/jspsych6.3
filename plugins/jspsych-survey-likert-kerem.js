@@ -186,7 +186,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
         if (el === null && requestResponseCounter  < 1) {
-          document.getElementById('jspsych-survey-likert-preamble').scrollTop = 0; \\scroll to top
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
           openModal()
           requestResponseCounter += 1
           return; 
