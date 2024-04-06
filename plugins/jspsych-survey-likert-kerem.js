@@ -172,19 +172,22 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     span.onclick = function() {
       modal.style.display = "none";
     }
+
+    var requestResponseCounter = 0
     
     display_element.querySelector('#jspsych-survey-likert-form').addEventListener('submit', function(e){
       e.preventDefault();
       // measure response time
       var endTime = performance.now();
       var response_time = endTime - startTime;
-
+      
       var matches = display_element.querySelectorAll('#jspsych-survey-likert-form .jspsych-survey-likert-opts');
       for(var index = 0; index < matches.length; index++){
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
-        if (el === null) {
+        if (el === null && requestResponseCounter  < 1) {
           openModal()
+          requestResponseCounter += 1
           return; 
         }
       }
