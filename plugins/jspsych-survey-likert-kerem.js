@@ -151,7 +151,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
       <div id="noResponse" class="modal" style="display: none;">
         <div class="modal-content">
           <span class="close">&times;</span>
-          <p>There were some <b>unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.</p>
+          <p>There were some <b style="color: navy;">unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.</p>
         </div>
       </div>`;
   
