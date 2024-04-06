@@ -174,7 +174,6 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     }
 
     // make the modal scroll screen to top
-
     function scrollToTop() {
       window.scrollTo({
           top: 0,
