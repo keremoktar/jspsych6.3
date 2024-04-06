@@ -7,11 +7,11 @@
  */
 
 
-jsPsych.plugins['survey-multi-select'] = (function() {
+jsPsych.plugins['survey-multi-select-kerem'] = (function() {
   var plugin = {};
 
   plugin.info = {
-    name: 'survey-multi-select',
+    name: 'survey-multi-select-kerem',
     description: '',
     parameters: {
       questions: {
