@@ -146,42 +146,33 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
 
     html += '</form>'
 
-    display_element.innerHTML = html;
-
-    // build noResponse pop-up 
-    function noResp() {
-      // Create modal container
-      var modalContainer = document.createElement('div');
-      modalContainer.classList.add('modal');
-      modalContainer.id = 'noResponse';
-    
-      // Create modal content
-      var modalContent = document.createElement('div');
-      modalContent.classList.add('modal-content');
-    
-      // Create close button
-      var closeButton = document.createElement('span');
-      closeButton.classList.add('close');
-      closeButton.innerHTML = '&times;';
-      closeButton.onclick = function() {
-        modalContainer.style.display = "none";
-      };
-    
-      // Create modal message
-      var modalMessage = document.createElement('p');
-      modalMessage.innerHTML = 'There were some <b>unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.';
-    
-      // Append elements to modal content
-      modalContent.appendChild(closeButton);
-      modalContent.appendChild(modalMessage);
-    
-      // Append modal content to modal container
-      modalContainer.appendChild(modalContent);
-    
-      // Append modal container to document body
-      document.body.appendChild(modalContainer);
+    // Add Modal:
+    // Function to close the modal
+    function closeModal() {
+      var modal = document.getElementById("noResponse");
+      modal.style.display = "none";
     }
+    
+    // Function to open the modal (if needed)
+    function openModal() {
+      var modal = document.getElementById("noResponse");
+      modal.style.display = "block";
+    }
+    
+    // Define the modal directly in HTML
+    var modalHTML = '
+      <div id="noResponse" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <p>There were some <b>unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.</p>
+        </div>
+      </div>';
+    
+    // Append modal HTML to the existing HTML
+    html += modalHTML;
 
+    display_element.innerHTML = html;
+    
     display_element.querySelector('#jspsych-survey-likert-form').addEventListener('submit', function(e){
       e.preventDefault();
       // measure response time
@@ -193,7 +184,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
         if (el === null) {
-          noResp()
+          openModal()
           return; 
         }
       }
