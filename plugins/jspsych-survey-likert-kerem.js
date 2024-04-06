@@ -186,8 +186,8 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
         if (el === null && requestResponseCounter  < 1) {
-          document.body.scrollTop = document.documentElement.scrollTop = 0;
           openModal()
+          window.scrollTo(0, 0);
           requestResponseCounter += 1
           return; 
         }
