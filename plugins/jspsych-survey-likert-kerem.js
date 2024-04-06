@@ -172,13 +172,6 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     span.onclick = function() {
       modal.style.display = "none";
     }
-    
-    function scrollDivToTop(divId) {
-      const div = document.getElementById(divId);
-      if (div) {
-        div.scrollTop = 0;
-      }
-    }
 
     var requestResponseCounter = 0
     
@@ -193,7 +186,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
         var id = matches[index].dataset['radioGroup'];
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
         if (el === null && requestResponseCounter  < 1) {
-          scrollDivToTop(jspsych-content)
+          document.getElementById('jspsych-survey-likert-preamble').scrollTop = 0; \\scroll to top
           openModal()
           requestResponseCounter += 1
           return; 
