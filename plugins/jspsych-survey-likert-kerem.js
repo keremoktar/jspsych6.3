@@ -156,7 +156,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     function openModal() {
       var modal = document.getElementById("noResponse");
       $("noResponse").show(); 
-      modal.style.display = "block";
+      //modal.style.display = "block";
     }
 
     // Add Modal:
@@ -176,7 +176,8 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
-      modal.style.display = "none";
+      $("noResponse").hide(); 
+      //modal.style.display = "none";
     }
     
     
