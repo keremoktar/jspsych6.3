@@ -148,7 +148,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
 
     // Add Modal:
     var modalHTML = `
-      <div id="noResponse" class="modal">
+      <div id="noResponse" class="modal" style="display: none;">
         <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
           <p>There were some <b>unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.</p>
