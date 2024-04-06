@@ -187,8 +187,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
         if (el === null && requestResponseCounter  < 1) {
           openModal()
-          var myDiv = document.getElementById('jspsych-content');
-          myDiv.scrollTop = 0;
+          modal.scrollIntoView();
           requestResponseCounter += 1
           return; 
         }
