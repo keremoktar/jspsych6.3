@@ -2,13 +2,13 @@
  * jspsych-survey-likert
  * a jspsych plugin for measuring items on a likert scale
  *
- * Josh de Leeuw
+ * Josh de Leeuw; modified by Kerem Oktar 4/6/24
  *
  * documentation: docs.jspsych.org
  *
  */
 
-jsPsych.plugins['survey-likert'] = (function() {
+jsPsych.plugins['survey-likert-kerem'] = (function() {
 
   var plugin = {};
 
