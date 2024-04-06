@@ -175,12 +175,15 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
 
     // make the modal scroll screen to top
     function scrollToTop() {
-      window.scrollTo({
-          top: 0,
-          behavior: "smooth" // Optional: smooth scrolling animation
-          });
+        // For cross-browser compatibility
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    
+        // Scroll to top smoothly
+        if (scrollTop > 0) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
-
+    
     var requestResponseCounter = 0
     
     display_element.querySelector('#jspsych-survey-likert-form').addEventListener('submit', function(e){
