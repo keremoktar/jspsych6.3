@@ -172,7 +172,9 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
         var el = display_element.querySelector('input[name="' + id + '"]:checked');
         if (el === null) {
           noResp()
+          return; 
         }
+      }
 
       // create object to hold responses
       var question_data = {};
