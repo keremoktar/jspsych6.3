@@ -147,6 +147,14 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
     html += '</form>'
 
     // Add Modal:
+    var modalHTML = `
+      <div id="noResponse" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <p>There were some <b>unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.</p>
+        </div>
+      </div>`;
+    
     // Function to close the modal
     function closeModal() {
       var modal = document.getElementById("noResponse");
@@ -158,15 +166,6 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
       var modal = document.getElementById("noResponse");
       modal.style.display = "block";
     }
-    
-    // Define the modal directly in HTML
-    var modalHTML = '
-      <div id="noResponse" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal()">&times;</span>
-          <p>There were some <b>unanswered questions</b> on this page!<br>Please make sure you did not accidentally skip a question by reviewing your answers before continuing.</p>
-        </div>
-      </div>';
     
     // Append modal HTML to the existing HTML
     html += modalHTML;
