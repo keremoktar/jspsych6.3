@@ -8,7 +8,7 @@
  *
  */
 
-jsPsych.plugins['survey-likert-kerem'] = (function() {
+jsPsych.plugins['survey-likert-kerem-tr'] = (function() {
 
   var plugin = {};
 
