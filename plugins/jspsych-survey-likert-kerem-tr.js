@@ -13,7 +13,7 @@ jsPsych.plugins['survey-likert-kerem'] = (function() {
   var plugin = {};
 
   plugin.info = {
-    name: 'survey-likert-kerem',
+    name: 'survey-likert-kerem-tr',
     description: '',
     parameters: {
       questions: {
